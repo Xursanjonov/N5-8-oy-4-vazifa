@@ -6,7 +6,7 @@ router.use(express.json())
 // GET users
 router.get('/', async (req, res) => {
     try {
-        const { limit, skip = 0 } = req.query;
+        const { limit = 5, skip = 0 } = req.query;
         const users = await User.find().limit(limit).skip(skip * limit);
         if (!users.length) {
             return res.status(400).json({
